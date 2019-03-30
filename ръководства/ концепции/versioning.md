@@ -102,5 +102,13 @@ The implementation may decide to share the underlying code--for example, by conv
 The "HELLO" message exchanged when peers connect to each other contains the min and max version the instance supports. The other endpoint may decide to disconnect right away if it's not compatible.
 
 
-
+union TransactionEnvelope switch (int v)
+{
+case 0:
+    struct
+    {
+        Transaction tx;
+        DecoratedSignature signatures<20>;
+    } v0;
+};
 
